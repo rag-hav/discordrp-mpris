@@ -11,7 +11,7 @@ from discord_rpc.async_ import (AsyncDiscordRpc, DiscordRpcError, JSON,
 
 from .config import Config
 
-CLIENT_ID = '435587535150907392'
+CLIENT_ID = '800471878824099850'
 PLAYER_ICONS = {
     # Maps player identity name to icon name
     # https://discord.com/developers/applications/435587535150907392/rich-presence/assets
@@ -23,7 +23,7 @@ PLAYER_ICONS = {
     'SMPlayer': 'smplayer',
     'Lollypop': 'lollypop',
 }
-DEFAULT_LOG_LEVEL = logging.WARNING
+DEFAULT_LOG_LEVEL = logging.DEBUG
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=DEFAULT_LOG_LEVEL)
@@ -143,14 +143,10 @@ class DiscordMpris:
             activity['state'] = self.format_details("{state}", replacements)
 
         # set icons and hover texts
-        if player.name in PLAYER_ICONS:
-            activity['assets'] = {'large_text': player.name,
-                                  'large_image': PLAYER_ICONS[player.name],
-                                  'small_image': state.lower(),
-                                  'small_text': state}
-        else:
-            activity['assets'] = {'large_text': f"{player.name} ({state})",
-                                  'large_image': state.lower()}
+        activity['assets'] = {'large_text': "Beluga hai ye",
+                              'large_image': "beluga",
+                              'small_image': "weird",
+                              'small_text': "ye pata nhi kya h"}
 
         if activity != self.last_activity:
             op_recv, result = await self.discord.set_activity(activity)

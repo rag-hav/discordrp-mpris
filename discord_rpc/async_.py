@@ -148,6 +148,9 @@ class AsyncDiscordRpc(metaclass=ABCMeta):
                 logger.warning("received unexpected reply; %s", reply)
 
     async def send(self, data: JSON, *, op=OP_FRAME) -> None:
+        print("sending data")
+        print(data)
+        print("end")
         logger.debug("sending %s", data)
         data_str = json.dumps(data, separators=(',', ':'))
         data_bytes = data_str.encode('utf-8')

@@ -109,6 +109,8 @@ class Mpris2Dbussy():
     async def get_players(self):
         result_list = []
         for bus_name in await self.get_player_names():
+            # if "clementine" not in repr(bus_name):
+            #     continue
             try:
                 result_list.append(await self.get_player_ifaces(bus_name))
             except Mpris2Error as e:

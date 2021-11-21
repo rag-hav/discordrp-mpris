@@ -187,6 +187,7 @@ class UnixDiscordRpc(DiscordRpc):
     def _connect(self):
         self._sock = socket.socket(socket.AF_UNIX)
         pipe_pattern = self._get_pipe_pattern()
+        print("pipe ", pipe_pattern)
 
         for i in range(10):
             path = pipe_pattern.format(i)
